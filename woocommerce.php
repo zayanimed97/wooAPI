@@ -11,7 +11,7 @@ function join_params( $params ) {
     
     return implode( '%26', $query_params );
 }
-
+/*
 $data = [
               "name"=> "Test Product RG",
               "type"=> "variable",
@@ -35,7 +35,7 @@ $data = [
                     ],
                 ],
             ];
-
+*/
 
 // WooCommerce REST API keys. Update these with your keys.
 $consumer_key = 'ck_791c6117b77a172eb333e61764496bba97bdd88a';
@@ -109,6 +109,7 @@ if ($err) {
 
 }
 
+/*
 $variation_data1 = [
     'regular_price' => '15.00',
     'attributes'    => [
@@ -132,4 +133,5 @@ $variation[] = RESTAPI("/wp-json/wc/v3/products/$product->id/variations", "POST"
 $variation[] = RESTAPI("/wp-json/wc/v3/products/$product->id/variations", "POST", $variation_data2);
 // $product = json_decode(RESTAPI("/wp-json/wc/v3/products", "GET"));
 echo json_encode($variation);
+*/
 ?>
