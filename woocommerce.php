@@ -109,6 +109,12 @@ if ($err) {
 
 }
 
+
+function dd($variable){
+    echo '<pre>';
+    die(var_dump($variable));
+    echo '</pre>';
+}
 /*
 $variation_data1 = [
     'regular_price' => '15.00',
