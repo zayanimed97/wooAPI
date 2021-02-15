@@ -1,9 +1,9 @@
 <?php 
-include("woocommerce.php");
+include(__DIR__ ."/woocommerce.php");
 //RESTAPI PARAMS : API URI , METHOD, DATA(optional), KEY(optional), SECRET(optional)
 $list_product = json_decode(RESTAPI("/wp-json/wc/v3/products", "GET"));
 
-$itemcode=7000017;//$one['id']; // !!!!!!
+//$itemcode=7000017;//$one['id']; // !!!!!!
 
 $ch = curl_init();
 
