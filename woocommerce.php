@@ -86,15 +86,15 @@ curl_setopt_array($curl, array(
     "Authorization: OAuth oauth_consumer_key=\"".$consumer_key."\",oauth_signature_method=\"".$oauth_signature_method."\",oauth_timestamp=\"".$timestamp."\",oauth_nonce=\"".$nonce."\",oauth_signature=\"".$oauth_signature."\"",
     "Cache-Control: no-cache",
     "Connection: keep-alive",
-    strtoupper($method) == "POST" || strtoupper($method) == "PUT" ? "Content-Type: application/json" : null,
+    "Content-Type: application/json",
     "accept-encoding: gzip, deflate",
     "cache-control: no-cache"
   ),
 ));
 
-if(strtoupper($method) == "POST" || strtoupper($method) == "PUT"){
+
     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
-}
+
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
