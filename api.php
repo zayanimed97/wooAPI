@@ -30,17 +30,20 @@ foreach($list_product as $one){
     });
 
     if (!$prod) {
-    	$restapi = RESTAPI("/wp-json/wc/v3/products/$sku", "PUT", ["manage_stock" => true,"stock_quantity"=> 0, "stock_status"=>"outofstock"]);
+    	$restapi = RESTAPI("/wp-json/wc/v3/products/$sku", "PUT", ["manage_stock" => true,"stock_quantity"=> 0, "_stock"=>0, "stock_status"=>"outofstock","_stock_status"=>"outofstock"]);
     	continue;
     }
     if ($prod) {
     	$prod = reset($prod);
     }
+
     if (is_object($prod)) {
 	    $stock = is_null($prod->dblBalnce) || $prod->dblBalnce < 1 ? "outofstock" : "instock";
-	    $restapi = RESTAPI("/wp-json/wc/v3/products/$sku", "PUT", ["manage_stock" => true,"stock_quantity"=> $prod->dblBalnce, "stock_status"=>$stock]);
-		echo '<pre>';
-	    print_r(json_encode($restapi));
+	    $restapi = RESTAPI("/wp-json/wc/v3/products/$sku", "PUT", ["manage_stock" => true,"stock_quantity"=> $prod->dblBalnce,"_stock"=>$prod->dblBalnce, "stock_status"=>$stock,"_stock_status"=>$stock]);
+	//	echo '<pre>';
+	//    print_r(json_encode($restapi));
     }
+	
+
 }
 ?>
